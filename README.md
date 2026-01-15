@@ -1,46 +1,43 @@
-<p align="center">
-  <pre align="center">
-   ╭─────╮
-  ╭┤ ◉ ◉ ├╮
-  │╰──┬──╯│
-  ╰───┴───╯
-  </pre>
-</p>
+# mindkit 🧠 - Forge your AI development mind
 
-<h1 align="center">mindkit</h1>
+![mindkit Banner](assets/mindkit-banner.svg)
 
-<p align="center">
-  <strong>Forge your AI development mind</strong>
-</p>
+[![npm version](https://img.shields.io/npm/v/mindkit?style=flat-square&color=7C3AED&logo=npm)](https://www.npmjs.com/package/mindkit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-06B6D4?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-F59E0B?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-7C3AED?style=flat-square)](https://github.com/Viniciuscarvalho/mindkit/pulls)
 
-<p align="center">
-  Install and sync your AI development configurations across <strong>Claude Code</strong>, <strong>Cursor</strong>, and <strong>OpenAI Codex</strong> with a single command.
-</p>
+**Install and sync your AI development configurations across Claude Code, Cursor, and OpenAI Codex with a single command.**
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/mindkit"><img src="https://img.shields.io/npm/v/mindkit.svg?style=flat-square&color=7C3AED" alt="npm version"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-06B6D4.svg?style=flat-square" alt="License: MIT"></a>
-  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D18.0.0-F59E0B?style=flat-square" alt="Node.js"></a>
-</p>
+Define your commands, agents, and templates once — deploy everywhere.
 
 ---
 
-## Quick Install
+## ✨ Features
+
+- 🔄 **Multi-tool Sync** — Claude Code, Cursor, and Codex support built-in
+- 🎯 **Interactive CLI** — Beautiful TUI for selecting tools and components
+- 📦 **Template System** — Customizable commands, agents, and doc templates
+- 💾 **Auto Backup** — Never lose your configurations
+- 🔀 **Watch Mode** — Real-time sync on file changes
+- 🛠️ **Path Placeholders** — Tool-agnostic paths that work everywhere
+
+---
+
+## 🚀 Quick Start
 
 **Run instantly** (no installation):
-
 ```bash
 npx mindkit install
 ```
 
 **Install globally**:
-
 ```bash
 npm install -g mindkit
 ```
 
-**Via Homebrew** (coming soon):
-
+**Via Homebrew**:
 ```bash
 brew tap viniciuscarvalho/mindkit
 brew install mindkit
@@ -48,19 +45,7 @@ brew install mindkit
 
 ---
 
-## What it does
-
-mindkit solves the pain of maintaining consistent AI configurations across multiple tools. Define your commands, agents, and templates once, then deploy everywhere.
-
-```
-┌─────────────┐     ┌──────────────┐
-│  mindkit    │────▶│ Claude Code  │  ~/.claude/commands/
-│  templates  │────▶│ Cursor       │  .cursor/rules/
-│             │────▶│ Codex        │  ~/.codex/AGENTS.md
-└─────────────┘     └──────────────┘
-```
-
-## Usage
+## 📖 Usage
 
 ### Install configs to your AI tools
 
@@ -78,14 +63,13 @@ mindkit install --dry-run
 ### Initialize in a project
 
 ```bash
-# Detect installed tools and create config
 mindkit init
 ```
 
 ### Sync between tools
 
 ```bash
-# One-time sync from Claude to Cursor
+# One-time sync
 mindkit sync --source claude --target cursor
 
 # Watch mode - auto-sync on changes
@@ -95,35 +79,38 @@ mindkit sync --watch
 ### Manage backups
 
 ```bash
-# Create backup before making changes
-mindkit backup create
-
-# List available backups
-mindkit backup list
-
-# Restore from backup
-mindkit backup restore
+mindkit backup create    # Create backup
+mindkit backup list      # List backups
+mindkit backup restore   # Restore from backup
 ```
 
 ### List components
 
 ```bash
-# List all available templates
-mindkit list
-
-# List by type
-mindkit list commands
-mindkit list agents
-
-# Show detected tools
-mindkit list tools
+mindkit list            # All components
+mindkit list commands   # Commands only
+mindkit list agents     # Agents only
+mindkit list tools      # Detected tools
 ```
 
 ---
 
-## Built-in Templates
+## 🗺️ Tool Mapping
+
+mindkit automatically translates configurations for each tool:
+
+| Concept | Claude Code | Cursor | Codex |
+|---------|-------------|--------|-------|
+| **Commands** | `~/.claude/commands/*.md` | `.cursor/rules/*.mdc` | `~/.codex/AGENTS.md` |
+| **Agents** | `~/.claude/agents/*.md` | Embedded in rules | Merged in AGENTS.md |
+| **Project config** | `CLAUDE.md` | `.cursorrules` | `AGENTS.md` |
+
+---
+
+## 📦 Built-in Templates
 
 ### Commands
+
 | Name | Description |
 |------|-------------|
 | `create-prd` | Generate Product Requirements Documents |
@@ -131,6 +118,7 @@ mindkit list tools
 | `generate-tasks` | Break down specs into implementable tasks |
 
 ### Agents
+
 | Name | Description |
 |------|-------------|
 | `swift-expert` | Senior Swift developer with SwiftUI expertise |
@@ -140,19 +128,7 @@ mindkit list tools
 
 ---
 
-## Tool Mapping
-
-mindkit automatically translates configurations for each tool:
-
-| Concept | Claude Code | Cursor | Codex |
-|---------|-------------|--------|-------|
-| Commands | `~/.claude/commands/*.md` | `.cursor/rules/*.mdc` | `~/.codex/AGENTS.md` |
-| Agents | `~/.claude/agents/*.md` | Embedded in rules | Merged in AGENTS.md |
-| Project config | `CLAUDE.md` | `.cursorrules` | `AGENTS.md` |
-
----
-
-## Template Placeholders
+## 🔧 Template Placeholders
 
 Templates use placeholders that resolve correctly for each tool:
 
@@ -170,9 +146,9 @@ Output to {{PROJECT}}/docs/tasks/prd-{{feature}}/prd.md
 
 ---
 
-## Custom Templates
+## 📁 Custom Templates
 
-Add your own templates:
+Add your own templates in `~/.mindkit/templates/`:
 
 ```
 ~/.mindkit/
@@ -200,7 +176,7 @@ templates:
 
 ---
 
-## Programmatic API
+## 💻 Programmatic API
 
 ```typescript
 import { getAdapter, detectInstalledTools, getAllTemplates } from 'mindkit';
@@ -217,10 +193,10 @@ await claude.install(templates.commands[0], content);
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 ```bash
-git clone https://github.com/viniciuscarvalho/mindkit.git
+git clone https://github.com/Viniciuscarvalho/mindkit.git
 cd mindkit
 npm install
 npm run build
@@ -229,12 +205,14 @@ npm link  # Link for local testing
 
 ---
 
-## License
+## 📄 License
 
-MIT
+MIT © [Vinicius Carvalho](https://github.com/Viniciuscarvalho)
 
 ---
 
 <p align="center">
-  <sub>Built with care for the AI-assisted development community</sub>
+  <img src="assets/mindkit-logo.svg" width="60" alt="mindkit logo">
+  <br>
+  <sub>Built with 🧠 for the AI-assisted development community</sub>
 </p>

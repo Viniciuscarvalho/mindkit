@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="56" fill="#0F172A"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="url(#gradient)" stroke-width="2"/>
+
+  <!-- Brain/Circuit Icon -->
+  <g transform="translate(25, 25)" filter="url(#glow)">
+    <!-- Brain outline -->
+    <path d="M35 5 Q55 5 60 20 Q70 20 70 35 Q75 40 75 50 Q75 65 60 70 Q60 85 45 85 Q30 90 20 85 Q5 85 0 70 Q-15 65 -15 50 Q-15 40 -10 35 Q-10 20 5 20 Q10 5 35 5"
+          fill="none" stroke="url(#gradient)" stroke-width="3.5" transform="translate(15, 0)"/>
+
+    <!-- Circuit nodes -->
+    <circle cx="35" cy="30" r="5" fill="#7C3AED"/>
+    <circle cx="55" cy="25" r="5" fill="#06B6D4"/>
+    <circle cx="45" cy="50" r="6" fill="#F59E0B"/>
+    <circle cx="60" cy="45" r="5" fill="#7C3AED"/>
+    <circle cx="30" cy="55" r="5" fill="#06B6D4"/>
+
+    <!-- Circuit lines -->
+    <line x1="35" y1="30" x2="55" y2="25" stroke="#7C3AED" stroke-width="2" opacity="0.7"/>
+    <line x1="55" y1="25" x2="60" y2="45" stroke="#06B6D4" stroke-width="2" opacity="0.7"/>
+    <line x1="45" y1="50" x2="60" y2="45" stroke="#F59E0B" stroke-width="2" opacity="0.7"/>
+    <line x1="35" y1="30" x2="45" y2="50" stroke="#7C3AED" stroke-width="2" opacity="0.7"/>
+    <line x1="30" y1="55" x2="45" y2="50" stroke="#06B6D4" stroke-width="2" opacity="0.7"/>
+  </g>
+</svg>
