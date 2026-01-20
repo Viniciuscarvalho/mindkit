@@ -40,9 +40,15 @@ export class ClaudeAdapter extends BaseAdapter {
     const settingsPath = join(this.globalDir, 'settings.json');
     const settingsExist = await this.pathExists(settingsPath);
 
+    // Check if 'claude' command exists in PATH
+    const commandExists = this.commandExists('claude');
+
+    // Tool is installed if command exists OR if config directory with settings exists
+    const installed = commandExists || (configExists && settingsExist);
+
     return {
       tool: this.tool,
-      installed: configExists && settingsExist,
+      installed,
       configPath: configExists ? this.globalDir : null,
     };
   }

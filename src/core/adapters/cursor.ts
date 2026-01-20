@@ -34,16 +34,31 @@ export class CursorAdapter extends BaseAdapter {
   }
 
   async detect(): Promise<ToolDetection> {
-    // Check for Cursor app on macOS
-    const appPath = '/Applications/Cursor.app';
-    const appExists = await this.pathExists(appPath);
+    // Check for Cursor app on macOS (multiple possible locations)
+    const macAppPaths = [
+      '/Applications/Cursor.app',
+      join(homedir(), 'Applications/Cursor.app'),
+    ];
+    let appExists = false;
+    for (const appPath of macAppPaths) {
+      if (await this.pathExists(appPath)) {
+        appExists = true;
+        break;
+      }
+    }
 
-    // Also check for config directory
+    // Check for config directory
     const configExists = await this.pathExists(this.globalDir);
+
+    // Check if 'cursor' command exists in PATH
+    const commandExists = this.commandExists('cursor');
+
+    // Tool is installed if command exists, app exists, or config directory exists
+    const installed = commandExists || appExists || configExists;
 
     return {
       tool: this.tool,
-      installed: appExists || configExists,
+      installed,
       configPath: configExists ? this.globalDir : null,
     };
   }

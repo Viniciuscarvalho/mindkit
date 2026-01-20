@@ -37,9 +37,15 @@ export class CodexAdapter extends BaseAdapter {
     const configToml = join(this.globalDir, 'config.toml');
     const tomlExists = await this.pathExists(configToml);
 
+    // Check if 'codex' command exists in PATH
+    const commandExists = this.commandExists('codex');
+
+    // Tool is installed if command exists OR config directory/file exists
+    const installed = commandExists || configExists || tomlExists;
+
     return {
       tool: this.tool,
-      installed: configExists || tomlExists,
+      installed,
       configPath: configExists ? this.globalDir : null,
     };
   }

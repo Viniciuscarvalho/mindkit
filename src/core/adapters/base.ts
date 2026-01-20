@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { homedir } from 'node:os';
+import { execSync } from 'node:child_process';
 import type {
   ToolAdapter,
   ToolType,
@@ -35,6 +36,19 @@ export abstract class BaseAdapter implements ToolAdapter {
   protected async pathExists(path: string): Promise<boolean> {
     try {
       await access(this.expandPath(path));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Check if a command exists in PATH
+   */
+  protected commandExists(command: string): boolean {
+    try {
+      const whichCmd = process.platform === 'win32' ? 'where' : 'which';
+      execSync(`${whichCmd} ${command}`, { stdio: 'ignore' });
       return true;
     } catch {
       return false;

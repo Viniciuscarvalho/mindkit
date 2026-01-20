@@ -193,6 +193,17 @@ await claude.install(templates.commands[0], content);
 
 ---
 
+## 📋 Releases
+
+See the [CHANGELOG](CHANGELOG.md) for a complete history of changes.
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| [1.0.1](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.0.1) | 2026-01-20 | Improved tool detection via PATH |
+| [1.0.0](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.0.0) | 2026-01-19 | Initial release |
+
+---
+
 ## 🤝 Contributing
 
 ```bash
