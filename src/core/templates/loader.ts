@@ -1,4 +1,5 @@
 import { readFile, access } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
@@ -7,12 +8,27 @@ import type { TemplateConfig, TemplateRegistry, ComponentType } from '../../type
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+function findPackageRoot(startDir: string): string {
+  let currentDir = startDir;
+
+  while (currentDir !== dirname(currentDir)) {
+    const pkgPath = join(currentDir, 'package.json');
+    if (existsSync(pkgPath)) {
+      return currentDir;
+    }
+    currentDir = dirname(currentDir);
+  }
+
+  return join(__dirname, '..');
+}
+
 /**
  * Get the path to built-in templates
  */
 export function getBuiltinTemplatesDir(): string {
-  // Navigate from dist/core/templates to templates/
-  return join(__dirname, '..', '..', '..', 'templates');
+  // Find package root (where package.json is) then navigate to templates/
+  const packageRoot = findPackageRoot(__dirname);
+  return join(packageRoot, 'templates');
 }
 
 /**
