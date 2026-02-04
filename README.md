@@ -121,10 +121,16 @@ mindkit automatically translates configurations for each tool:
 
 | Name | Description |
 |------|-------------|
-| `swift-expert` | Senior Swift developer with SwiftUI expertise |
+| `architect` | Software architecture specialist for system design |
 | `backend-developer` | Backend engineer for APIs and microservices |
-| `ui-designer` | Visual designer for interfaces and design systems |
+| `code-reviewer` | Expert code review for quality, security, and maintainability |
+| `frontend-developer` | Modern frontend specialist with React/Vue expertise |
+| `mobile-developer` | Cross-platform mobile development specialist |
+| `swift-expert` | Senior Swift developer with SwiftUI expertise |
+| `swift-reviewer` | Code reviewer for Swift/SwiftUI code quality |
+| `swiftui-specialist` | SwiftUI expert for complex UI implementation |
 | `typescript-pro` | TypeScript expert for full-stack development |
+| `ui-designer` | Visual designer for interfaces and design systems |
 
 ---
 
@@ -199,6 +205,7 @@ See the [CHANGELOG](CHANGELOG.md) for a complete history of changes.
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [1.1.0](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.1.0) | 2026-02-04 | New agents and enhanced templates |
 | [1.0.2](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.0.2) | 2026-01-22 | Fix version detection and package.json handling |
 | [1.0.1](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.0.1) | 2026-01-20 | Improved tool detection via PATH |
 | [1.0.0](https://github.com/Viniciuscarvalho/mindkit/releases/tag/v1.0.0) | 2026-01-19 | Initial release |

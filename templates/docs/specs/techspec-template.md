@@ -1,111 +1,340 @@
-# Technical Specification Template
+# Technical Specification
 
-## Executive Summary
+**Project Name:** {{PROJECT_NAME}}
+**Version:** {{VERSION}}
+**Date:** {{DATE}}
+**Author:** {{AUTHOR}}
+**Status:** {{STATUS}}
 
-[Provide a brief technical overview of the solution approach. Summarize key architectural decisions and implementation strategy in 1–2 paragraphs.]
+---
 
-## System Architecture
+## Overview
 
-### Component Overview
+### Problem Statement
+{{PROBLEM_STATEMENT}}
 
-[Brief description of main components and their responsibilities:
+### Proposed Solution
+{{SOLUTION_OVERVIEW}}
 
-- Component names and primary functions
-- Key relationships between components
-- High-level data flow overview]
+### Goals
+- {{GOAL_1}}
+- {{GOAL_2}}
+- {{GOAL_3}}
 
-## Implementation Design
+---
 
-### Core Interfaces
+## Scope
 
-[Define main service interfaces (≤20 lines per example):
+### In Scope
+- {{IN_SCOPE_1}}
+- {{IN_SCOPE_2}}
+- {{IN_SCOPE_3}}
 
-```typescript
-// Example interface definition
-interface ServiceName {
-  methodName(input: InputType): Promise<OutputType>;
-}
+### Out of Scope
+- {{OUT_OF_SCOPE_1}}
+- {{OUT_OF_SCOPE_2}}
+- {{OUT_OF_SCOPE_3}}
+
+---
+
+## Requirements
+
+### Functional Requirements
+
+#### FR-001: {{FR_1_TITLE}} [MUST/SHOULD/COULD]
+{{FR_1_DESCRIPTION}}
+
+**Acceptance Criteria:**
+- {{FR_1_AC_1}}
+- {{FR_1_AC_2}}
+
+---
+
+#### FR-002: {{FR_2_TITLE}} [MUST/SHOULD/COULD]
+{{FR_2_DESCRIPTION}}
+
+**Acceptance Criteria:**
+- {{FR_2_AC_1}}
+- {{FR_2_AC_2}}
+
+---
+
+#### FR-003: {{FR_3_TITLE}} [MUST/SHOULD/COULD]
+{{FR_3_DESCRIPTION}}
+
+**Acceptance Criteria:**
+- {{FR_3_AC_1}}
+- {{FR_3_AC_2}}
+
+---
+
+### Non-Functional Requirements
+
+#### NFR-001: Performance [MUST/SHOULD]
+{{NFR_PERF_DESCRIPTION}}
+
+**Target:** {{NFR_PERF_TARGET}}
+
+---
+
+#### NFR-002: Security [MUST/SHOULD]
+{{NFR_SEC_DESCRIPTION}}
+
+**Requirements:**
+- {{NFR_SEC_REQ_1}}
+- {{NFR_SEC_REQ_2}}
+
+---
+
+#### NFR-003: Scalability [MUST/SHOULD]
+{{NFR_SCALE_DESCRIPTION}}
+
+**Target Load:** {{NFR_SCALE_TARGET}}
+
+---
+
+## Technical Approach
+
+### Architecture Overview
+{{ARCHITECTURE_OVERVIEW}}
+
+### Key Technologies
+- {{TECH_1}}: {{TECH_1_PURPOSE}}
+- {{TECH_2}}: {{TECH_2_PURPOSE}}
+- {{TECH_3}}: {{TECH_3_PURPOSE}}
+
+### Components
+
+#### Component 1: {{COMPONENT_1_NAME}}
+**Purpose:** {{COMPONENT_1_PURPOSE}}
+
+**Responsibilities:**
+- {{COMPONENT_1_RESP_1}}
+- {{COMPONENT_1_RESP_2}}
+
+**Interfaces:**
+- {{COMPONENT_1_INTERFACE_1}}
+- {{COMPONENT_1_INTERFACE_2}}
+
+---
+
+#### Component 2: {{COMPONENT_2_NAME}}
+**Purpose:** {{COMPONENT_2_PURPOSE}}
+
+**Responsibilities:**
+- {{COMPONENT_2_RESP_1}}
+- {{COMPONENT_2_RESP_2}}
+
+**Interfaces:**
+- {{COMPONENT_2_INTERFACE_1}}
+- {{COMPONENT_2_INTERFACE_2}}
+
+---
+
+### Data Model
+
+#### Entity 1: {{ENTITY_1_NAME}}
 ```
-]
+{{ENTITY_1_SCHEMA}}
+```
 
-### Data Models
+#### Entity 2: {{ENTITY_2_NAME}}
+```
+{{ENTITY_2_SCHEMA}}
+```
 
-[Define essential data structures:
+### API Design
 
-- Main domain entities (if applicable)
-- Request/response types
-- Database schemas (if applicable)]
+#### Endpoint 1: {{ENDPOINT_1}}
+**Method:** {{METHOD_1}}
+**Purpose:** {{PURPOSE_1}}
 
-### API Endpoints
+**Request:**
+```json
+{{REQUEST_1_EXAMPLE}}
+```
 
-[List API endpoints if applicable:
+**Response:**
+```json
+{{RESPONSE_1_EXAMPLE}}
+```
 
-- Method and path (e.g., `POST /api/v0/resource`)
-- Brief description
-- Request/response format references]
+---
 
-## Integration Points
+#### Endpoint 2: {{ENDPOINT_2}}
+**Method:** {{METHOD_2}}
+**Purpose:** {{PURPOSE_2}}
 
-[Include only if the feature requires external integrations:
+**Request:**
+```json
+{{REQUEST_2_EXAMPLE}}
+```
 
-- External services or APIs
-- Authentication requirements
-- Error handling approach]
+**Response:**
+```json
+{{RESPONSE_2_EXAMPLE}}
+```
+
+---
+
+## Implementation Considerations
+
+### Design Patterns
+- {{PATTERN_1}}: {{PATTERN_1_RATIONALE}}
+- {{PATTERN_2}}: {{PATTERN_2_RATIONALE}}
+
+### Error Handling
+{{ERROR_HANDLING_APPROACH}}
+
+### Logging and Monitoring
+{{LOGGING_APPROACH}}
+
+**Key Metrics to Track:**
+- {{METRIC_1}}
+- {{METRIC_2}}
+- {{METRIC_3}}
+
+### Configuration Management
+{{CONFIG_APPROACH}}
+
+---
 
 ## Testing Strategy
 
-### Unit Tests
+### Unit Testing
+**Coverage Target:** {{UNIT_TEST_COVERAGE}}%
 
-[Describe unit testing strategy:
+**Focus Areas:**
+- {{UNIT_TEST_AREA_1}}
+- {{UNIT_TEST_AREA_2}}
 
-- Main components to test
-- Mocking requirements (external services only)
-- Critical test scenarios]
+### Integration Testing
+**Scenarios:**
+1. {{INTEGRATION_SCENARIO_1}}
+2. {{INTEGRATION_SCENARIO_2}}
+3. {{INTEGRATION_SCENARIO_3}}
 
-## Development Sequencing
+### Performance Testing
+**Load Profile:** {{LOAD_PROFILE}}
 
-### Build Order
+**Success Criteria:**
+- {{PERF_CRITERION_1}}
+- {{PERF_CRITERION_2}}
 
-[Define implementation sequence:
+### Security Testing
+**Tests Required:**
+- {{SECURITY_TEST_1}}
+- {{SECURITY_TEST_2}}
+- {{SECURITY_TEST_3}}
 
-1. First component/feature (why first)
-2. Second component/feature (dependencies)
-3. Subsequent components
-4. Integration and testing]
+---
 
-### Technical Dependencies
+## Deployment
 
-[List any blocking dependencies:
+### Deployment Strategy
+{{DEPLOYMENT_STRATEGY}}
 
-- Required infrastructure
-- External service availability]
+### Environment Requirements
+- **Development:** {{DEV_REQUIREMENTS}}
+- **Staging:** {{STAGING_REQUIREMENTS}}
+- **Production:** {{PROD_REQUIREMENTS}}
 
-## Technical Considerations
+### Rollout Plan
+1. {{ROLLOUT_STEP_1}}
+2. {{ROLLOUT_STEP_2}}
+3. {{ROLLOUT_STEP_3}}
 
-### Key Decisions
+### Rollback Procedure
+{{ROLLBACK_PROCEDURE}}
 
-[Document important technical decisions:
+---
 
-- Chosen approach and justification
-- Trade-offs considered
-- Rejected alternatives and why]
+## Dependencies
 
-### Known Risks
+### External Dependencies
+| Dependency | Version | Purpose | Risk |
+|------------|---------|---------|------|
+| {{DEP_1}} | {{VERSION_1}} | {{PURPOSE_1}} | {{RISK_1}} |
+| {{DEP_2}} | {{VERSION_2}} | {{PURPOSE_2}} | {{RISK_2}} |
 
-[Identify technical risks:
+### Internal Dependencies
+- {{INTERNAL_DEP_1}}
+- {{INTERNAL_DEP_2}}
 
-- Potential challenges
-- Mitigation approaches
-- Areas requiring research]
+---
 
-### Special Requirements
+## Assumptions and Constraints
 
-[Only if applicable:
+### Assumptions
+1. {{ASSUMPTION_1}}
+2. {{ASSUMPTION_2}}
+3. {{ASSUMPTION_3}}
 
-- Performance requirements (specific metrics)
-- Security considerations (beyond standard auth)
-- Additional monitoring needs]
+### Constraints
+1. {{CONSTRAINT_1}}
+2. {{CONSTRAINT_2}}
+3. {{CONSTRAINT_3}}
 
-### Relevant Files
+---
 
-[List relevant files here]
+## Timeline
+
+### Milestones
+| Milestone | Target Date | Deliverables |
+|-----------|-------------|--------------|
+| {{MILESTONE_1}} | {{DATE_1}} | {{DELIVERABLE_1}} |
+| {{MILESTONE_2}} | {{DATE_2}} | {{DELIVERABLE_2}} |
+| {{MILESTONE_3}} | {{DATE_3}} | {{DELIVERABLE_3}} |
+
+### Tasks Breakdown
+1. **{{TASK_1}}** - {{TASK_1_ESTIMATE}}
+2. **{{TASK_2}}** - {{TASK_2_ESTIMATE}}
+3. **{{TASK_3}}** - {{TASK_3_ESTIMATE}}
+4. **{{TASK_4}}** - {{TASK_4_ESTIMATE}}
+
+**Total Estimated Effort:** {{TOTAL_ESTIMATE}}
+
+---
+
+## Risks and Mitigations
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| {{RISK_1}} | {{IMPACT_1}} | {{PROB_1}} | {{MITIGATION_1}} |
+| {{RISK_2}} | {{IMPACT_2}} | {{PROB_2}} | {{MITIGATION_2}} |
+| {{RISK_3}} | {{IMPACT_3}} | {{PROB_3}} | {{MITIGATION_3}} |
+
+---
+
+## Success Criteria
+
+- [ ] {{SUCCESS_CRITERION_1}}
+- [ ] {{SUCCESS_CRITERION_2}}
+- [ ] {{SUCCESS_CRITERION_3}}
+- [ ] All functional requirements implemented
+- [ ] All non-functional requirements met
+- [ ] All tests passing
+- [ ] Documentation complete
+- [ ] Code reviewed and approved
+
+---
+
+## Appendix
+
+### Glossary
+| Term | Definition |
+|------|------------|
+| {{TERM_1}} | {{DEFINITION_1}} |
+| {{TERM_2}} | {{DEFINITION_2}} |
+
+### References
+1. {{REFERENCE_1}}
+2. {{REFERENCE_2}}
+3. {{REFERENCE_3}}
+
+### Diagrams
+_[Attach architecture diagrams, flow charts, sequence diagrams]_
+
+---
+
+**Document End**
