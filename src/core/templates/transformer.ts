@@ -23,6 +23,12 @@ const TOOL_PATH_MAPPINGS: Record<ToolType, Record<string, string>> = {
     HOME: homedir(),
     CONFIG: `${homedir()}/.codex`,
   },
+  gemini: {
+    DOCS: './.gemini/docs',
+    PROJECT: '.',
+    HOME: homedir(),
+    CONFIG: `${homedir()}/.gemini`,
+  },
 };
 
 /**

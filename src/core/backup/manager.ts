@@ -160,6 +160,13 @@ export function getFilesToBackup(tools: ToolType[]): string[] {
       case 'codex':
         files.push(join(home, '.codex', 'AGENTS.md'));
         break;
+      case 'gemini':
+        files.push(
+          join(home, '.gemini', 'agents'),
+          join(home, '.gemini', 'skills'),
+          join(home, '.gemini', 'docs')
+        );
+        break;
     }
   }
 

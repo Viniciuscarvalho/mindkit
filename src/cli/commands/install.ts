@@ -25,7 +25,7 @@ interface InstallCommandOptions {
 export function createInstallCommand(): Command {
   return new Command('install')
     .description('Install AI configs to selected tools')
-    .option('-t, --tools <tools>', 'Comma-separated list of tools (claude,cursor,codex)')
+    .option('-t, --tools <tools>', 'Comma-separated list of tools (claude,cursor,codex,gemini)')
     .option('-c, --components <components>', 'Comma-separated list of components (commands,agents,templates,skills)')
     .option('--dry-run', 'Show what would be installed without making changes')
     .option('-f, --force', 'Overwrite existing files without prompting')

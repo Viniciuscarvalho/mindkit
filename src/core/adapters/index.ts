@@ -2,11 +2,13 @@ import type { ToolAdapter, ToolType } from '../../types/index.js';
 import { ClaudeAdapter } from './claude.js';
 import { CursorAdapter } from './cursor.js';
 import { CodexAdapter } from './codex.js';
+import { GeminiAdapter } from './gemini.js';
 
 export { BaseAdapter } from './base.js';
 export { ClaudeAdapter } from './claude.js';
 export { CursorAdapter } from './cursor.js';
 export { CodexAdapter } from './codex.js';
+export { GeminiAdapter } from './gemini.js';
 
 /**
  * Get adapter instance for a specific tool
@@ -19,6 +21,8 @@ export function getAdapter(tool: ToolType): ToolAdapter {
       return new CursorAdapter();
     case 'codex':
       return new CodexAdapter();
+    case 'gemini':
+      return new GeminiAdapter();
   }
 }
 
@@ -26,7 +30,12 @@ export function getAdapter(tool: ToolType): ToolAdapter {
  * Get all available adapters
  */
 export function getAllAdapters(): ToolAdapter[] {
-  return [new ClaudeAdapter(), new CursorAdapter(), new CodexAdapter()];
+  return [
+    new ClaudeAdapter(),
+    new CursorAdapter(),
+    new CodexAdapter(),
+    new GeminiAdapter(),
+  ];
 }
 
 /**

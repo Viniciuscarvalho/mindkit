@@ -55,7 +55,7 @@ export class ClaudeAdapter extends BaseAdapter {
 
   protected getDefaultTransforms(projectRoot?: string): PathTransform[] {
     return [
-      { type: 'variable', from: 'DOCS', to: './docs' },
+      { type: 'variable', from: 'DOCS', to: join(this.globalDir, 'docs') },
       { type: 'variable', from: 'PROJECT', to: projectRoot || '.' },
       { type: 'variable', from: 'HOME', to: homedir() },
       { type: 'variable', from: 'CONFIG', to: this.globalDir },
@@ -79,15 +79,15 @@ export class ClaudeAdapter extends BaseAdapter {
     }
 
     try {
-      // Apply transforms
+      // Apply transforms to content
       const transforms = [
         ...this.getDefaultTransforms(projectRoot),
         ...(template.transforms || []),
       ];
       const transformedContent = this.transformContent(content, transforms);
 
-      // Expand target path
-      let targetPath = target.path;
+      // Transform and expand target path
+      let targetPath = this.transformPath(target.path, projectRoot);
       if (targetPath.startsWith('~')) {
         targetPath = targetPath.replace('~', homedir());
       } else if (projectRoot && !targetPath.startsWith('/')) {

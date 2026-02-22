@@ -94,6 +94,22 @@ export abstract class BaseAdapter implements ToolAdapter {
   }
 
   /**
+   * Transform a path by replacing placeholders
+   */
+  protected transformPath(path: string, projectRoot?: string): string {
+    const transforms = this.getDefaultTransforms(projectRoot);
+    let result = path;
+
+    for (const transform of transforms) {
+      if (transform.type === 'variable') {
+        result = result.replaceAll(`{{${transform.from}}}`, transform.to);
+      }
+    }
+
+    return result;
+  }
+
+  /**
    * Get the default transforms for this adapter
    */
   protected abstract getDefaultTransforms(projectRoot?: string): PathTransform[];

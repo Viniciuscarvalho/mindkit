@@ -35,6 +35,11 @@ export async function selectTools(
       value: 'codex',
       disabled: available.get('codex') ? undefined : '(not detected)',
     },
+    {
+      name: 'Gemini CLI',
+      value: 'gemini',
+      disabled: available.get('gemini') ? undefined : '(not detected)',
+    },
   ];
 
   const selected = await checkbox({

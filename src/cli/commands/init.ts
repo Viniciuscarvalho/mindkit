@@ -68,7 +68,7 @@ async function runInit(options: InitCommandOptions): Promise<void> {
   }
 
   if (detected.length === 0) {
-    printWarning('No AI tools detected. Please install Claude, Cursor, or Codex first.');
+    printWarning('No AI tools detected. Please install Claude, Cursor, Codex, or Gemini first.');
     return;
   }
 

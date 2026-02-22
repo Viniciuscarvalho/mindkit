@@ -57,136 +57,61 @@ async function pathExists(path: string): Promise<boolean> {
   }
 }
 
+import { discoverTemplatesInDir } from './discovery.js';
+
 /**
- * Load the default template registry
+ * Load the default template registry by discovering templates dynamically.
  */
 export function getDefaultRegistry(): TemplateRegistry {
+  const builtinTemplatesDir = getBuiltinTemplatesDir();
+  
+  // Dynamically discover agents and commands
+  const agentTemplates = discoverTemplatesInDir(join(builtinTemplatesDir, 'agents'), 'agents');
+  const commandTemplates = discoverTemplatesInDir(join(builtinTemplatesDir, 'commands'), 'commands');
+
+  // Keep doc templates hardcoded for now as their paths are more complex
+  const docTemplates: TemplateConfig[] = [
+    {
+      name: 'prd-template',
+      source: 'docs/specs/prd-template.md',
+      type: 'templates',
+      description: 'Product Requirements Document template',
+      targets: {
+        claude: { path: '{{DOCS}}/specs/prd-template.md' },
+        cursor: { path: '.cursor/docs/specs/prd-template.md' },
+        codex: { path: './docs/specs/prd-template.md' },
+        gemini: { path: '{{DOCS}}/specs/prd-template.md' },
+      },
+    },
+    {
+      name: 'techspec-template',
+      source: 'docs/specs/techspec-template.md',
+      type: 'templates',
+      description: 'Technical Specification template',
+      targets: {
+        claude: { path: '{{DOCS}}/specs/techspec-template.md' },
+        cursor: { path: '.cursor/docs/specs/techspec-template.md' },
+        codex: { path: './docs/specs/techspec-template.md' },
+        gemini: { path: '{{DOCS}}/specs/techspec-template.md' },
+      },
+    },
+    {
+      name: 'task-template',
+      source: 'docs/tasks/task-template.md',
+      type: 'templates',
+      description: 'Individual task template',
+      targets: {
+        claude: { path: '{{DOCS}}/tasks/task-template.md' },
+        cursor: { path: '.cursor/docs/tasks/task-template.md' },
+        codex: { path: './docs/tasks/task-template.md' },
+        gemini: { path: '{{DOCS}}/tasks/task-template.md' },
+      },
+    },
+  ];
+
   return {
     version: 1,
-    templates: [
-      // Commands
-      {
-        name: 'create-prd',
-        source: 'commands/create-prd.md',
-        type: 'commands',
-        description: 'Generate Product Requirements Documents',
-        targets: {
-          claude: { path: '~/.claude/commands/create-prd.md' },
-          cursor: { path: '.cursor/rules/create-prd.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'PRD Creation' },
-        },
-        transforms: [
-          { type: 'path', from: './docs/', to: '{{DOCS}}/' },
-        ],
-      },
-      {
-        name: 'generate-spec',
-        source: 'commands/generate-spec.md',
-        type: 'commands',
-        description: 'Create technical specifications from PRDs',
-        targets: {
-          claude: { path: '~/.claude/commands/generate-spec.md' },
-          cursor: { path: '.cursor/rules/generate-spec.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'Tech Spec Generation' },
-        },
-        transforms: [
-          { type: 'path', from: './docs/', to: '{{DOCS}}/' },
-        ],
-      },
-      {
-        name: 'generate-tasks',
-        source: 'commands/generate-tasks.md',
-        type: 'commands',
-        description: 'Break down specs into implementable tasks',
-        targets: {
-          claude: { path: '~/.claude/commands/generate-tasks.md' },
-          cursor: { path: '.cursor/rules/generate-tasks.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'Task Generation' },
-        },
-        transforms: [
-          { type: 'path', from: './docs/', to: '{{DOCS}}/' },
-        ],
-      },
-      // Agents
-      {
-        name: 'swift-expert',
-        source: 'agents/swift-expert.md',
-        type: 'agents',
-        description: 'Senior Swift developer agent',
-        targets: {
-          claude: { path: '~/.claude/agents/swift-expert.md' },
-          cursor: { path: '.cursor/rules/swift-expert.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'Swift Expert' },
-        },
-      },
-      {
-        name: 'backend-developer',
-        source: 'agents/backend-developer.md',
-        type: 'agents',
-        description: 'Backend engineer agent',
-        targets: {
-          claude: { path: '~/.claude/agents/backend-developer.md' },
-          cursor: { path: '.cursor/rules/backend-developer.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'Backend Developer' },
-        },
-      },
-      {
-        name: 'ui-designer',
-        source: 'agents/ui-designer.md',
-        type: 'agents',
-        description: 'UI/UX designer agent',
-        targets: {
-          claude: { path: '~/.claude/agents/ui-designer.md' },
-          cursor: { path: '.cursor/rules/ui-designer.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'UI Designer' },
-        },
-      },
-      {
-        name: 'typescript-pro',
-        source: 'agents/typescript-pro.md',
-        type: 'agents',
-        description: 'TypeScript expert agent',
-        targets: {
-          claude: { path: '~/.claude/agents/typescript-pro.md' },
-          cursor: { path: '.cursor/rules/typescript-pro.mdc' },
-          codex: { path: '~/.codex/AGENTS.md', merge: true, sectionHeader: 'TypeScript Pro' },
-        },
-      },
-      // Templates
-      {
-        name: 'prd-template',
-        source: 'docs/specs/prd-template.md',
-        type: 'templates',
-        description: 'Product Requirements Document template',
-        targets: {
-          claude: { path: '{{DOCS}}/specs/prd-template.md' },
-          cursor: { path: '.cursor/docs/specs/prd-template.md' },
-          codex: { path: './docs/specs/prd-template.md' },
-        },
-      },
-      {
-        name: 'techspec-template',
-        source: 'docs/specs/techspec-template.md',
-        type: 'templates',
-        description: 'Technical Specification template',
-        targets: {
-          claude: { path: '{{DOCS}}/specs/techspec-template.md' },
-          cursor: { path: '.cursor/docs/specs/techspec-template.md' },
-          codex: { path: './docs/specs/techspec-template.md' },
-        },
-      },
-      {
-        name: 'task-template',
-        source: 'docs/tasks/task-template.md',
-        type: 'templates',
-        description: 'Individual task template',
-        targets: {
-          claude: { path: '{{DOCS}}/tasks/task-template.md' },
-          cursor: { path: '.cursor/docs/tasks/task-template.md' },
-          codex: { path: './docs/tasks/task-template.md' },
-        },
-      },
-    ],
+    templates: [...commandTemplates, ...agentTemplates, ...docTemplates],
   };
 }
 

@@ -1,7 +1,7 @@
 /**
  * Supported AI development tools
  */
-export type ToolType = 'claude' | 'cursor' | 'codex';
+export type ToolType = 'claude' | 'cursor' | 'codex' | 'gemini';
 
 /**
  * Component types that can be installed
@@ -174,5 +174,9 @@ export const DEFAULT_PATHS: Record<ToolType, { global: string; project: string }
   codex: {
     global: '~/.codex',
     project: 'AGENTS.md',
+  },
+  gemini: {
+    global: '~/.gemini',
+    project: '.gemini',
   },
 };

@@ -25,7 +25,7 @@ interface SyncCommandOptions {
 export function createSyncCommand(): Command {
   return new Command('sync')
     .description('Sync configurations between tools')
-    .option('-s, --source <tool>', 'Source tool (claude, cursor, codex)')
+    .option('-s, --source <tool>', 'Source tool (claude, cursor, codex, gemini)')
     .option('-t, --target <tools>', 'Comma-separated target tools')
     .option('-w, --watch', 'Watch for changes and sync automatically')
     .action(async (options: SyncCommandOptions) => {
@@ -213,5 +213,11 @@ function getWatchPaths(tool: ToolType): string[] {
       return [join(home, '.cursor', 'rules')];
     case 'codex':
       return [join(home, '.codex')];
+    case 'gemini':
+      return [
+        join(home, '.gemini', 'agents'),
+        join(home, '.gemini', 'skills'),
+        join(home, '.gemini', 'docs'),
+      ];
   }
 }
