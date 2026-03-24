@@ -1,10 +1,11 @@
 # Technical Specification
 
 **Project Name:** {{PROJECT_NAME}}
+**Feature:** {{FEATURE_NAME}}
 **Version:** {{VERSION}}
 **Date:** {{DATE}}
-**Author:** {{AUTHOR}}
 **Status:** {{STATUS}}
+**PRD Reference:** `./prd.md`
 
 ---
 
@@ -12,6 +13,7 @@
 
 ### Problem Statement
 {{PROBLEM_STATEMENT}}
+_(Sourced from PRD Executive Summary)_
 
 ### Proposed Solution
 {{SOLUTION_OVERVIEW}}
@@ -21,75 +23,78 @@
 - {{GOAL_2}}
 - {{GOAL_3}}
 
+### PRD Requirements Coverage
+
+| PRD Requirement | Covered in Section | Implementation Approach |
+|-----------------|-------------------|------------------------|
+| FR-001 | Components → {{COMPONENT}} | {{APPROACH}} |
+| FR-002 | Components → {{COMPONENT}} | {{APPROACH}} |
+| NFR-001 | Implementation Considerations | {{APPROACH}} |
+
 ---
 
 ## Scope
 
 ### In Scope
-- {{IN_SCOPE_1}}
-- {{IN_SCOPE_2}}
-- {{IN_SCOPE_3}}
+- {{IN_SCOPE_1}} _(FR-001)_
+- {{IN_SCOPE_2}} _(FR-002)_
+- {{IN_SCOPE_3}} _(NFR-001)_
 
 ### Out of Scope
-- {{OUT_OF_SCOPE_1}}
+- {{OUT_OF_SCOPE_1}} _(deferred to Phase 2 per PRD)_
 - {{OUT_OF_SCOPE_2}}
-- {{OUT_OF_SCOPE_3}}
 
 ---
 
-## Requirements
+## Existing Codebase Analysis
 
-### Functional Requirements
+### Project Structure (Relevant Paths)
+```
+{{PROJECT_ROOT}}/
+├── {{PATH_1}}/          # {{PURPOSE_1}}
+├── {{PATH_2}}/          # {{PURPOSE_2}}
+├── {{PATH_3}}/          # {{PURPOSE_3}}
+└── {{CONFIG_FILE}}      # {{CONFIG_PURPOSE}}
+```
 
-#### FR-001: {{FR_1_TITLE}} [MUST/SHOULD/COULD]
-{{FR_1_DESCRIPTION}}
+### Existing Patterns to Follow
 
-**Acceptance Criteria:**
-- {{FR_1_AC_1}}
-- {{FR_1_AC_2}}
+**Code Organization:**
+- {{PATTERN_1}} — e.g., "Modules follow `feature/` folder structure with index barrel exports"
+- {{PATTERN_2}} — e.g., "All services implement the `BaseService` interface"
 
----
+**Naming Conventions:**
+- Files: {{FILE_NAMING}} — e.g., `kebab-case.ts`
+- Functions: {{FUNC_NAMING}} — e.g., `camelCase`
+- Types/Interfaces: {{TYPE_NAMING}} — e.g., `PascalCase`, prefixed with `I` for interfaces
+- Constants: {{CONST_NAMING}} — e.g., `SCREAMING_SNAKE_CASE`
 
-#### FR-002: {{FR_2_TITLE}} [MUST/SHOULD/COULD]
-{{FR_2_DESCRIPTION}}
+**Error Handling Pattern:**
+```{{LANGUAGE}}
+{{ERROR_HANDLING_EXAMPLE}}
+```
 
-**Acceptance Criteria:**
-- {{FR_2_AC_1}}
-- {{FR_2_AC_2}}
+**Logging Pattern:**
+```{{LANGUAGE}}
+{{LOGGING_EXAMPLE}}
+```
 
----
+**Test Pattern:**
+```{{LANGUAGE}}
+{{TEST_EXAMPLE}}
+```
 
-#### FR-003: {{FR_3_TITLE}} [MUST/SHOULD/COULD]
-{{FR_3_DESCRIPTION}}
+### Existing Dependencies (Relevant)
 
-**Acceptance Criteria:**
-- {{FR_3_AC_1}}
-- {{FR_3_AC_2}}
+| Package / Module | Version | Used For | Important Notes |
+|------------------|---------|----------|-----------------|
+| {{DEP_1}} | {{VER_1}} | {{USE_1}} | {{NOTES_1}} |
+| {{DEP_2}} | {{VER_2}} | {{USE_2}} | {{NOTES_2}} |
 
----
-
-### Non-Functional Requirements
-
-#### NFR-001: Performance [MUST/SHOULD]
-{{NFR_PERF_DESCRIPTION}}
-
-**Target:** {{NFR_PERF_TARGET}}
-
----
-
-#### NFR-002: Security [MUST/SHOULD]
-{{NFR_SEC_DESCRIPTION}}
-
-**Requirements:**
-- {{NFR_SEC_REQ_1}}
-- {{NFR_SEC_REQ_2}}
-
----
-
-#### NFR-003: Scalability [MUST/SHOULD]
-{{NFR_SCALE_DESCRIPTION}}
-
-**Target Load:** {{NFR_SCALE_TARGET}}
+### Existing Interfaces / Contracts to Respect
+```{{LANGUAGE}}
+{{EXISTING_INTERFACE_OR_TYPE}}
+```
 
 ---
 
@@ -98,151 +103,220 @@
 ### Architecture Overview
 {{ARCHITECTURE_OVERVIEW}}
 
-### Key Technologies
-- {{TECH_1}}: {{TECH_1_PURPOSE}}
-- {{TECH_2}}: {{TECH_2_PURPOSE}}
-- {{TECH_3}}: {{TECH_3_PURPOSE}}
+### Key Design Decisions
+
+| Decision | Chosen Option | Alternatives Considered | Rationale |
+|----------|--------------|------------------------|-----------|
+| {{DECISION_1}} | {{CHOSEN_1}} | {{ALT_1}} | {{RATIONALE_1}} |
+| {{DECISION_2}} | {{CHOSEN_2}} | {{ALT_2}} | {{RATIONALE_2}} |
 
 ### Components
 
 #### Component 1: {{COMPONENT_1_NAME}}
+
 **Purpose:** {{COMPONENT_1_PURPOSE}}
+**Location:** `{{FILE_PATH}}`
+**Implements PRD:** FR-001, STORY-001
 
 **Responsibilities:**
 - {{COMPONENT_1_RESP_1}}
 - {{COMPONENT_1_RESP_2}}
 
-**Interfaces:**
-- {{COMPONENT_1_INTERFACE_1}}
-- {{COMPONENT_1_INTERFACE_2}}
+**Public Interface:**
+```{{LANGUAGE}}
+{{COMPONENT_1_INTERFACE}}
+```
+
+**Internal Behavior:**
+1. {{STEP_1}}
+2. {{STEP_2}}
+3. {{STEP_3}}
+
+**Error States:**
+| Error Condition | Handling | User-Facing Message |
+|-----------------|----------|---------------------|
+| {{ERROR_1}} | {{HANDLING_1}} | {{MESSAGE_1}} |
+| {{ERROR_2}} | {{HANDLING_2}} | {{MESSAGE_2}} |
 
 ---
 
 #### Component 2: {{COMPONENT_2_NAME}}
-**Purpose:** {{COMPONENT_2_PURPOSE}}
 
-**Responsibilities:**
-- {{COMPONENT_2_RESP_1}}
-- {{COMPONENT_2_RESP_2}}
+_(Same structure as Component 1)_
 
-**Interfaces:**
-- {{COMPONENT_2_INTERFACE_1}}
-- {{COMPONENT_2_INTERFACE_2}}
+---
+
+### Component Interaction
+
+```
+[{{COMPONENT_1}}] --{{METHOD}}--> [{{COMPONENT_2}}]
+                                      |
+                                      v
+                                 [{{COMPONENT_3}}]
+```
 
 ---
 
 ### Data Model
 
 #### Entity 1: {{ENTITY_1_NAME}}
-```
+
+**Location:** `{{ENTITY_FILE_PATH}}`
+
+```{{LANGUAGE}}
 {{ENTITY_1_SCHEMA}}
 ```
 
-#### Entity 2: {{ENTITY_2_NAME}}
-```
-{{ENTITY_2_SCHEMA}}
-```
+**Constraints:**
+- {{CONSTRAINT_1}}
+- {{CONSTRAINT_2}}
 
-### API Design
-
-#### Endpoint 1: {{ENDPOINT_1}}
-**Method:** {{METHOD_1}}
-**Purpose:** {{PURPOSE_1}}
-
-**Request:**
-```json
-{{REQUEST_1_EXAMPLE}}
-```
-
-**Response:**
-```json
-{{RESPONSE_1_EXAMPLE}}
-```
+**Migrations Required:** Yes/No
+**Migration Details:** {{MIGRATION_DETAILS}}
 
 ---
 
-#### Endpoint 2: {{ENDPOINT_2}}
-**Method:** {{METHOD_2}}
-**Purpose:** {{PURPOSE_2}}
+### API Design (if applicable)
+
+#### {{METHOD_1}} {{ENDPOINT_1}}
+
+**Purpose:** {{PURPOSE_1}}
+**Implements PRD:** FR-001
 
 **Request:**
 ```json
-{{REQUEST_2_EXAMPLE}}
+{{REQUEST_EXAMPLE}}
 ```
 
-**Response:**
+**Response (Success):**
 ```json
-{{RESPONSE_2_EXAMPLE}}
+{{RESPONSE_SUCCESS}}
 ```
+
+**Response (Error):**
+```json
+{{RESPONSE_ERROR}}
+```
+
+**Validation Rules:**
+- {{VALIDATION_1}}
+- {{VALIDATION_2}}
+
+---
+
+## File Change Map
+
+_Exact files to be created or modified. This is the primary input for task generation._
+
+### New Files
+
+| File Path | Purpose | Component | Size Estimate |
+|-----------|---------|-----------|---------------|
+| `{{NEW_FILE_1}}` | {{PURPOSE_1}} | {{COMPONENT}} | S / M / L |
+| `{{NEW_FILE_2}}` | {{PURPOSE_2}} | {{COMPONENT}} | S / M / L |
+
+### Modified Files
+
+| File Path | Change Description | Risk Level | Component |
+|-----------|--------------------|------------|-----------|
+| `{{MOD_FILE_1}}` | {{CHANGE_DESC_1}} | Low / Med / High | {{COMPONENT}} |
+| `{{MOD_FILE_2}}` | {{CHANGE_DESC_2}} | Low / Med / High | {{COMPONENT}} |
+
+### Files to Read (Context Only)
+
+| File Path | Why It Matters |
+|-----------|----------------|
+| `{{READ_FILE_1}}` | {{REASON_1}} |
+| `{{READ_FILE_2}}` | {{REASON_2}} |
 
 ---
 
 ## Implementation Considerations
 
-### Design Patterns
-- {{PATTERN_1}}: {{PATTERN_1_RATIONALE}}
-- {{PATTERN_2}}: {{PATTERN_2_RATIONALE}}
+### Design Patterns Used
+- **{{PATTERN_1}}:** {{RATIONALE_1}}
+- **{{PATTERN_2}}:** {{RATIONALE_2}}
 
-### Error Handling
-{{ERROR_HANDLING_APPROACH}}
+### Edge Cases and Boundary Conditions
+| Scenario | Expected Behavior | Implementation Note |
+|----------|-------------------|---------------------|
+| {{EDGE_1}} | {{BEHAVIOR_1}} | {{NOTE_1}} |
+| {{EDGE_2}} | {{BEHAVIOR_2}} | {{NOTE_2}} |
 
-### Logging and Monitoring
-{{LOGGING_APPROACH}}
+### Performance Considerations
+- {{PERF_CONSIDERATION_1}}
+- {{PERF_CONSIDERATION_2}}
 
-**Key Metrics to Track:**
-- {{METRIC_1}}
-- {{METRIC_2}}
-- {{METRIC_3}}
+### Security Considerations
+- {{SEC_CONSIDERATION_1}}
+- {{SEC_CONSIDERATION_2}}
 
-### Configuration Management
-{{CONFIG_APPROACH}}
+### Backward Compatibility
+**Breaking Changes:** Yes/No
+**Details:** {{COMPAT_DETAILS}}
+**Migration Strategy:** {{MIGRATION_STRATEGY}}
+
+### Configuration
+| Config Key | Type | Default | Description |
+|------------|------|---------|-------------|
+| `{{CONFIG_1}}` | {{TYPE_1}} | {{DEFAULT_1}} | {{DESC_1}} |
+| `{{CONFIG_2}}` | {{TYPE_2}} | {{DEFAULT_2}} | {{DESC_2}} |
 
 ---
 
 ## Testing Strategy
 
-### Unit Testing
-**Coverage Target:** {{UNIT_TEST_COVERAGE}}%
+### Unit Tests
 
-**Focus Areas:**
-- {{UNIT_TEST_AREA_1}}
-- {{UNIT_TEST_AREA_2}}
+**Coverage Target:** {{COVERAGE}}%
+**Framework:** {{TEST_FRAMEWORK}}
 
-### Integration Testing
-**Scenarios:**
-1. {{INTEGRATION_SCENARIO_1}}
-2. {{INTEGRATION_SCENARIO_2}}
-3. {{INTEGRATION_SCENARIO_3}}
+| Test Suite | File | Covers Component | Key Scenarios |
+|------------|------|-----------------|---------------|
+| {{SUITE_1}} | `{{TEST_FILE_1}}` | {{COMPONENT_1}} | {{SCENARIOS_1}} |
+| {{SUITE_2}} | `{{TEST_FILE_2}}` | {{COMPONENT_2}} | {{SCENARIOS_2}} |
 
-### Performance Testing
-**Load Profile:** {{LOAD_PROFILE}}
+### Integration Tests
 
-**Success Criteria:**
-- {{PERF_CRITERION_1}}
-- {{PERF_CRITERION_2}}
+| Scenario | Components Involved | Setup Required | Expected Outcome |
+|----------|--------------------|--------------------|------------------|
+| {{INT_1}} | {{COMPONENTS}} | {{SETUP}} | {{OUTCOME}} |
+| {{INT_2}} | {{COMPONENTS}} | {{SETUP}} | {{OUTCOME}} |
 
-### Security Testing
-**Tests Required:**
-- {{SECURITY_TEST_1}}
-- {{SECURITY_TEST_2}}
-- {{SECURITY_TEST_3}}
+### Validation Commands
+
+```bash
+# Run all tests for this feature
+{{TEST_COMMAND}}
+
+# Lint check
+{{LINT_COMMAND}}
+
+# Type check (if applicable)
+{{TYPE_CHECK_COMMAND}}
+
+# Build verification
+{{BUILD_COMMAND}}
+```
 
 ---
 
 ## Deployment
 
-### Deployment Strategy
+### Strategy
 {{DEPLOYMENT_STRATEGY}}
 
 ### Environment Requirements
-- **Development:** {{DEV_REQUIREMENTS}}
-- **Staging:** {{STAGING_REQUIREMENTS}}
-- **Production:** {{PROD_REQUIREMENTS}}
+| Environment | Requirement | Notes |
+|-------------|-------------|-------|
+| Development | {{DEV_REQ}} | {{DEV_NOTES}} |
+| Staging | {{STAGING_REQ}} | {{STAGING_NOTES}} |
+| Production | {{PROD_REQ}} | {{PROD_NOTES}} |
 
-### Rollout Plan
-1. {{ROLLOUT_STEP_1}}
-2. {{ROLLOUT_STEP_2}}
-3. {{ROLLOUT_STEP_3}}
+### Feature Flags (if applicable)
+| Flag Name | Default | Controls |
+|-----------|---------|----------|
+| `{{FLAG_1}}` | {{DEFAULT}} | {{DESCRIPTION}} |
 
 ### Rollback Procedure
 {{ROLLBACK_PROCEDURE}}
@@ -251,89 +325,79 @@
 
 ## Dependencies
 
-### External Dependencies
-| Dependency | Version | Purpose | Risk |
-|------------|---------|---------|------|
-| {{DEP_1}} | {{VERSION_1}} | {{PURPOSE_1}} | {{RISK_1}} |
-| {{DEP_2}} | {{VERSION_2}} | {{PURPOSE_2}} | {{RISK_2}} |
+### New Dependencies Required
 
-### Internal Dependencies
-- {{INTERNAL_DEP_1}}
-- {{INTERNAL_DEP_2}}
+| Package | Version | Purpose | License | Size Impact |
+|---------|---------|---------|---------|-------------|
+| {{NEW_DEP_1}} | {{VER}} | {{PURPOSE}} | {{LICENSE}} | {{SIZE}} |
 
----
-
-## Assumptions and Constraints
-
-### Assumptions
-1. {{ASSUMPTION_1}}
-2. {{ASSUMPTION_2}}
-3. {{ASSUMPTION_3}}
-
-### Constraints
-1. {{CONSTRAINT_1}}
-2. {{CONSTRAINT_2}}
-3. {{CONSTRAINT_3}}
-
----
-
-## Timeline
-
-### Milestones
-| Milestone | Target Date | Deliverables |
-|-----------|-------------|--------------|
-| {{MILESTONE_1}} | {{DATE_1}} | {{DELIVERABLE_1}} |
-| {{MILESTONE_2}} | {{DATE_2}} | {{DELIVERABLE_2}} |
-| {{MILESTONE_3}} | {{DATE_3}} | {{DELIVERABLE_3}} |
-
-### Tasks Breakdown
-1. **{{TASK_1}}** - {{TASK_1_ESTIMATE}}
-2. **{{TASK_2}}** - {{TASK_2_ESTIMATE}}
-3. **{{TASK_3}}** - {{TASK_3_ESTIMATE}}
-4. **{{TASK_4}}** - {{TASK_4_ESTIMATE}}
-
-**Total Estimated Effort:** {{TOTAL_ESTIMATE}}
+### External Service Dependencies
+| Service | Endpoint | Auth Method | Fallback |
+|---------|----------|-------------|----------|
+| {{SERVICE_1}} | {{ENDPOINT}} | {{AUTH}} | {{FALLBACK}} |
 
 ---
 
 ## Risks and Mitigations
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| {{RISK_1}} | {{IMPACT_1}} | {{PROB_1}} | {{MITIGATION_1}} |
-| {{RISK_2}} | {{IMPACT_2}} | {{PROB_2}} | {{MITIGATION_2}} |
-| {{RISK_3}} | {{IMPACT_3}} | {{PROB_3}} | {{MITIGATION_3}} |
+| Risk | Impact (H/M/L) | Probability (H/M/L) | Mitigation | Contingency |
+|------|-----------------|----------------------|------------|-------------|
+| {{RISK_1}} | {{IMPACT}} | {{PROB}} | {{MITIGATION}} | {{CONTINGENCY}} |
+| {{RISK_2}} | {{IMPACT}} | {{PROB}} | {{MITIGATION}} | {{CONTINGENCY}} |
 
 ---
 
-## Success Criteria
+## Task Generation Guide
 
-- [ ] {{SUCCESS_CRITERION_1}}
-- [ ] {{SUCCESS_CRITERION_2}}
-- [ ] {{SUCCESS_CRITERION_3}}
-- [ ] All functional requirements implemented
-- [ ] All non-functional requirements met
-- [ ] All tests passing
-- [ ] Documentation complete
-- [ ] Code reviewed and approved
+_Instructions for breaking this TechSpec into executable tasks._
+
+### Suggested Task Order
+1. {{TASK_ORDER_1}} — {{RATIONALE}}
+2. {{TASK_ORDER_2}} — {{RATIONALE}}
+3. {{TASK_ORDER_3}} — {{RATIONALE}}
+
+### Task Dependency Graph
+```
+[Task 1: {{TASK_1}}]
+    ↓
+[Task 2: {{TASK_2}}] → [Task 3: {{TASK_3}}]
+    ↓
+[Task 4: {{TASK_4}} (Integration Tests)]
+    ↓
+[Task 5: {{TASK_5}} (Final Validation)]
+```
+
+### Complexity Distribution
+| Task | Complexity | Estimated Effort | Critical Path |
+|------|-----------|------------------|---------------|
+| {{TASK_1}} | S / M / L | {{EFFORT}} | Yes / No |
+| {{TASK_2}} | S / M / L | {{EFFORT}} | Yes / No |
 
 ---
 
-## Appendix
+## TechSpec Validation Checklist
 
-### Glossary
+_This section MUST be verified against the actual codebase before the document is considered complete._
+
+- [ ] Every PRD FR has a corresponding component or section
+- [ ] File Change Map reflects actual project structure (paths verified)
+- [ ] Existing patterns section matches real codebase conventions
+- [ ] All interfaces/contracts are compatible with existing code
+- [ ] No new dependency conflicts with existing dependencies
+- [ ] Test strategy covers all acceptance criteria from PRD
+- [ ] Validation commands are runnable in the project
+- [ ] Backward compatibility is assessed and documented
+- [ ] Task Generation Guide provides a viable execution order
+- [ ] Edge cases from PRD are addressed in components
+
+---
+
+## Glossary
+
 | Term | Definition |
 |------|------------|
 | {{TERM_1}} | {{DEFINITION_1}} |
 | {{TERM_2}} | {{DEFINITION_2}} |
-
-### References
-1. {{REFERENCE_1}}
-2. {{REFERENCE_2}}
-3. {{REFERENCE_3}}
-
-### Diagrams
-_[Attach architecture diagrams, flow charts, sequence diagrams]_
 
 ---
 
